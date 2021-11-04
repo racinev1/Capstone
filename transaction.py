@@ -47,7 +47,8 @@ class TransactionCost:
         self.high = high
         self.max_iter = max_iter
         self.tol = tol
-        
+    def __call__(self, current_weight, desired_weight):
+        return self.bisection(current_weight, desired_weight)
     @staticmethod
     def objective(mu, current_weights, desired_weights, *,
                   selling_cost=5e-4, purchasing_cost=5e-4):
@@ -95,7 +96,7 @@ class TransactionCost:
 
         Returns
         -------
-        boolen
+        boolean
             True if x1 and x2 are of the same sign. False otherwise.
 
         """

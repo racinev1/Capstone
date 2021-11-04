@@ -67,8 +67,8 @@ class Cluster(AgglomerativeClustering):
 
         Parameters
         ----------
-        X : array like of shape (N,N) or (N,T).
-            Price of return of each stock
+        X : array like of shape (N,T).
+            Price or return of each stock
 
         Returns
         -------
@@ -89,8 +89,8 @@ class Cluster(AgglomerativeClustering):
         Compute a proper distance metric based on the correlation.
         Parameters
         ----------
-        X : array like of shape (N,N) or (N,T).
-            Price of return of each stock
+        X : array like of shape (N,T).
+            Price or return of each stock
 
         Returns
         -------

@@ -87,15 +87,14 @@ def find_income(payments,
     Returns
     -------
     monthly_income : float
-        The monthly income achieved with current investment plan. This corresponds to the
-        first monthly payment
+        The monthly income achieved with current investment plan.
 
     """ 
-    if not payments:
-        npv_at_retirement = amount_in_portfolio ** work_time
+    if payments is None:
+        npv_at_retirement = amount_in_portfolio * r_growth ** work_time
     else:
-        npv_at_retirement = amount_in_portfolio + np.sum([payments[t] * r_growth ** t
-                                                          for t in range(work_time)])
+        npv_at_retirement = amount_in_portfolio * r_growth ** work_time + np.sum([payments[t] * r_growth ** t
+                                                                       for t in range(work_time)])
     monthly_income = npv_at_retirement / np.sum([(inflation/r_safe)**t
                                          for t in range(retirement_time)])
     return monthly_income
